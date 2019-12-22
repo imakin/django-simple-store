@@ -1,0 +1,40 @@
+- model: store.storesetting
+  pk: 1
+  fields:
+    name: price_currency
+    value: IDR
+- model: store.storesetting
+  pk: 2
+  fields:
+    name: price_multiplier
+    value: 1000
+- model: store.storesetting
+  pk: 3
+  fields:
+    name: fake_user_email_domain
+    value: izzulmakin.com
+- model: store.storesetting
+  pk: 4
+  fields:
+    name: product_image_url_format_front_small
+    value: "{{ sku }}-front-800x900.jpg"
+- model: store.storesetting
+  pk: 5
+  fields:
+    name: product_image_url_format_front_big
+    value: "{{ sku }}-front-1778x2000.jpg"
+- model: store.storesetting
+  pk: 6
+  fields:
+    name: product_image_url_format_pic_small
+    value: "{{ sku }}-pic-800x800.jpg"
+- model: store.storesetting
+  pk: 7
+  fields:
+    name: product_image_url_format_pic_big
+    value: "{{ sku }}-pic-1800x1800.jpg"
+- model: store.storesetting
+  pk: 8
+  fields:
+    name: product_image_url_prefix
+    value: "/static/store/products/"

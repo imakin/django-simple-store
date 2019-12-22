@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html >
+{% block head %}
+<head
+	{% block head_attr %}
+	{% endblock %}
+>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" 
+		content="width=device-width, initial-scale=1">
+    {% block meta_description %}
+    <meta name="description" 
+		content="Nicole Kids : Baju anak bergambar tanpa makhluk hidup">
+	{% endblock %}
+	
+    <title>
+		{% block title_inside %}
+		Nicole Kids : Baju anak bergambar tanpa makhluk hidup
+		{% endblock %}
+	</title>
+
+	{% load staticfiles %}
+	{% block static_override_outside %}
+		<link rel="stylesheet" href="{% static 'store/css/all.min.css' %}"/>
+		<script type="text/javascript" src="{% static 'store/js/all.js' %}"></script>
+		<script type="text/javascript" src="{% static 'store/js/lib/vue.js' %}"></script>
+		<script type="text/javascript" src="/store/frontend_config.js"></script>
+		{% block static_override_inside %}
+		{% endblock %}
+	{% endblock %}
+		
+	
+	{% block head_inside %}
+    {% endblock %}
+</head>
+{% endblock %}
+<body
+	{% block body_attr %}
+	{% endblock %}
+>	
+	{% block body_inside %}
+	{% endblock %}
+	
+	{% block script %}
+		{% block script_inside %}
+		{% endblock %}
+	{% endblock %}
+
+	{% block footer_inside %}
+	{% endblock %}
+</body>
+

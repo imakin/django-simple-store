@@ -1,0 +1,30 @@
+{% extends "store/default.html" %}
+{% load staticfiles %}
+
+{% block static_override_inside %}
+    <link rel="stylesheet" href="{% static 'store/css/home.min.css' %}"/>
+    <script src="/store/products.js"></script>
+{% endblock %}
+
+{% block body_attr %}
+id="page-home"
+{% endblock %}
+
+{% block body_inside %}
+HALOOO
+<ul id="product-list">
+    <li v-for="product in products">
+        {% verbatim %}
+            {{ product.fields.sku }}
+            {{ product.fields.name }}
+            <product-image-front v-bind:sku="product.fields.sku"></product-image-front>
+            <product-image-pic v-bind:sku="product.fields.sku"></product-image-pic>
+        {% endverbatim %}
+    </li>
+</ul>
+
+
+
+
+<script src="{% static 'store/js/home.js' %}"></script>
+{% endblock %}
