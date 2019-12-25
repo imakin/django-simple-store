@@ -17,24 +17,34 @@
   pk: 4
   fields:
     name: product_image_url_format_front_small
-    value: "{{ sku }}-front-800x900.jpg"
+    value: "[SKU]-front-800x900.jpg"
 - model: store.storesetting
   pk: 5
   fields:
     name: product_image_url_format_front_big
-    value: "{{ sku }}-front-1778x2000.jpg"
+    value: "[SKU]-front-1778x2000.jpg"
 - model: store.storesetting
   pk: 6
   fields:
-    name: product_image_url_format_pic_small
-    value: "{{ sku }}-pic-800x800.jpg"
+    name: product_image_url_format_front_thumb
+    value: "[SKU]-front-160x180.jpg"
 - model: store.storesetting
   pk: 7
   fields:
-    name: product_image_url_format_pic_big
-    value: "{{ sku }}-pic-1800x1800.jpg"
+    name: product_image_url_format_pic_small
+    value: "[SKU]-pic-800x800.jpg"
 - model: store.storesetting
   pk: 8
   fields:
+    name: product_image_url_format_pic_big
+    value: "[SKU]-pic-1800x1800.jpg"
+- model: store.storesetting
+  pk: 9
+  fields:
+    name: product_image_url_format_pic_thumb
+    value: "[SKU]-pic-160x160.jpg"
+- model: store.storesetting
+  pk: 10
+  fields:
     name: product_image_url_prefix
-    value: "/static/store/products/"
+    value: "/static/store/products/[SKU]/"

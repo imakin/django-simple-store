@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 
 <html >
@@ -23,9 +24,15 @@
 
 	{% load staticfiles %}
 	{% block static_override_outside %}
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet">
 		<link rel="stylesheet" href="{% static 'store/css/all.min.css' %}"/>
-		<script type="text/javascript" src="{% static 'store/js/all.js' %}"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 		<script type="text/javascript" src="{% static 'store/js/lib/vue.js' %}"></script>
+		
+		<script type="text/javascript" src="{% static 'store/js/all.js' %}"></script>
 		<script type="text/javascript" src="/store/frontend_config.js"></script>
 		{% block static_override_inside %}
 		{% endblock %}

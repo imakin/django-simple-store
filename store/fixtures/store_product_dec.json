@@ -1,0 +1,74 @@
+[
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "enabled": true,
+      "sku": "1.m.red",
+      "name": "Monster Truck",
+      "size": "M",
+      "color": "red",
+      "stock": 3,
+      "price": 23,
+      "final_price": 0,
+      "description": "Monster Truck OFFROAD. Mobil 4x4. gambar keren!",
+      "tags": null,
+      "additional_image_links": "",
+      "date_created": "2019-12-22T12:57:13Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "enabled": true,
+      "sku": "2.s.yellow",
+      "name": "Tiga Monster Truck",
+      "size": "m",
+      "color": "yellow",
+      "stock": 1,
+      "price": 23,
+      "final_price": 0,
+      "description": "Tiga Mobil Monster Truck menghadap depan",
+      "tags": null,
+      "additional_image_links": "",
+      "date_created": "2019-12-22T17:17:38Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "enabled": true,
+      "sku": "3.l.white",
+      "name": "Motor Cross Putih",
+      "size": "l",
+      "color": "white",
+      "stock": 1,
+      "price": 25,
+      "final_price": 23,
+      "description": "Motor Cross Putih. Motor Keren design cocok untuk anak anak tanpa gambar makhluk hidup",
+      "tags": "motor cross\r\nmotor\r\ntransportation\r\nputih",
+      "additional_image_links": "",
+      "date_created": "2019-12-23T06:08:42Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "enabled": true,
+      "sku": "4.s.yellow",
+      "name": "Monster Truck Crunch Time Yellow",
+      "size": "s",
+      "color": "yellow",
+      "stock": 1,
+      "price": 25,
+      "final_price": 23,
+      "description": "Monster Truck tema Crunch Time warna kuning. Desain keren transportasi tanpa makhluk hidup",
+      "tags": "monster truck\r\noffroad\r\nyellow\r\ntransportation",
+      "additional_image_links": "",
+      "date_created": "2019-12-23T06:31:17Z"
+    }
+  }
+]

@@ -1,0 +1,6 @@
+- model: store.product
+  pk: 1
+  fields:
+    sku: producttest
+    price: 23
+    name: producttest_name

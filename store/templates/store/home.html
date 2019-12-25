@@ -1,4 +1,5 @@
 {% extends "store/default.html" %}
+{% load i18n %}
 {% load staticfiles %}
 
 {% block static_override_inside %}
@@ -11,20 +12,88 @@ id="page-home"
 {% endblock %}
 
 {% block body_inside %}
-HALOOO
-<ul id="product-list">
-    <li v-for="product in products">
-        {% verbatim %}
-            {{ product.fields.sku }}
-            {{ product.fields.name }}
-            <product-image-front v-bind:sku="product.fields.sku"></product-image-front>
-            <product-image-pic v-bind:sku="product.fields.sku"></product-image-pic>
-        {% endverbatim %}
-    </li>
-</ul>
+<h1>
+    {% trans "Kaos anak anak bergambar lucu transportasi" %}
+    <span class="white">
+        {% trans "tanpa gambar makhluk hidup" %}
+    </span>
+</h1>
 
+<div id="user-bar">
+    
+</div>
 
-
+<div id="product-list-container">
+    <button id="product-list-make-grid" type="button" class="flat" v-on:click="listGrid">
+        x
+    </button>
+    <ul id="product-list">
+        <li class="product-list-item" v-for="product in products" v-bind:data-sku="product.fields.sku">
+            <div class="action-bar">
+                <div class="relative">
+                    <div class="absolute">
+                        <div class="box folded">
+                            <button type="button"
+                                class="add-to-cart flat"
+                                v-bind:data-sku="product.fields.sku"
+                                v-on:click="addToCart"
+                            >
+                                <i class="material-icons">shopping_cart</i>
+                                <span class="text">
+                                    {% trans "Add to cart" %}
+                                </span>
+                            </button>
+                            <button type="button"
+                                class="image-other flat"
+                                v-bind:data-sku="product.fields.sku"
+                                v-on:click="switchImage"
+                            >
+                                <i class="material-icons">
+                                    photo
+                                </i>
+                                <span class="text">
+                                    {% trans "see photo" %}
+                                </span>
+                            </button>
+                            <button type="button" class="size flat">
+                                <span class="text">
+                                    {% trans "size" %}
+                                </span>
+                                <span class="size-circle">L</span>
+                            </button>
+                            <button type="button" class="fold flat" v-on:click="actionBoxFold">
+                                <i class="material-icons right">
+                                    keyboard_arrow_right
+                                </i>
+                                <i class="material-icons left">
+                                    keyboard_arrow_left
+                                </i>
+                            </button>
+                        </div><!--.box-->
+                    </div><!--.absolute-->
+                </div><!--.relative-->
+            </div><!--.actionbar-->
+            <div class="inside" v-on:click="listExpand">
+                {% verbatim %}
+                    <div class="product-info">
+                        {{ product.fields.sku }}
+                        {{ product.fields.name }}
+                    </div>
+                    <div class="image-box pic">
+                        <img
+                            class="product-image img-pic lozad"
+                            v-bind:data-src="product.fields.images.pic.small"
+                        />
+                        <img
+                            class="product-image img-front lozad"
+                            v-bind:data-src="product.fields.images.front.small"
+                        />
+                    </div>
+                {% endverbatim %}
+            </div><!--.inside-->
+        </li>
+    </ul>
+</div>
 
 <script src="{% static 'store/js/home.js' %}"></script>
 {% endblock %}

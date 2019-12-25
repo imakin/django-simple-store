@@ -21,7 +21,9 @@ class Product(models.Model):
     color   = models.CharField(max_length=64, default="red")
     stock   = models.IntegerField(default=0)
     price   = models.IntegerField(default=0)
+    final_price=models.IntegerField(default=0)
     description= models.TextField(blank=True, null=True)
+    tags = models.TextField(blank=True, null=True)
     additional_image_links = models.TextField(blank=True, null=True)
     date_created = models.DateTimeField(default=timezone.now)
     def __str__(self):
@@ -32,10 +34,17 @@ class Customer(models.Model):
     
     enabled = models.BooleanField(default=True)
     phone_number = models.CharField(max_length=30, unique=True)
-    cart = models.ManyToManyField('Product', blank=True)
+    cart = models.ManyToManyField('Product', through='CustomerCart', blank=True)
     
     def __str__(self):
         return self.phone_number
+
+class CustomerCart(models.Model):
+    customer = models.ForeignKey('Customer', on_delete=models.CASCADE, null=True,blank=True)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, null=True,blank=True)
+    amount = models.IntegerField(default=1)
+    def __str__(self):
+        return self.customer.phone_number
 
 class Address(models.Model):
     complete_address = models.TextField()

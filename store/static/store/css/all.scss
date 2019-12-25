@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+$font-dosis: 'Dosis', sans-serif;
+$font-concert: 'Concert One', sans-serif;
+
+
+img, ul, li {
+    max-width: 100%;
+}
 ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+button.flat {
+    cursor: pointer;
+    &, &:hover, &:active {
+        background: transparent;
+        border: solid 1px #6c6c6c;
+    }
+}
+span.white {
+    color: transparent;
+}
+.hidden, [hidden]{
+    display: none !important;
+}
+.size-circle {
+    $size-circle-size: 20px;
+    border: solid 3px black;
+    width: $size-circle-size;
+    height: $size-circle-size;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: #{$size-circle-size - 1px};
 }

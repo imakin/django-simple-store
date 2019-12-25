@@ -25,13 +25,18 @@ def products_js(request):
 
 
 def user_js(request):
-    user = None
-    data = {"user":{}}
+    userdata = {}
     if request.user.is_authenticated:
-        data["user"]["whatsapp"] = request.user.customer.phone_number
+        userdata["login"] = True
+        userdata["whatsapp"] = request.user.customer.phone_number
+        userdata["cart"] = []
+        for prod in request.user.customer.cart.values():
+            userdata["cart"].append(
+                prod["sku"]
+            )
     else:
-        data["user"]["whatsapp"] = "BELUM LOGIN"
-    return HttpResponse("user_model = "+json.dumps(data))
+        userdata["login"] = False
+    return HttpResponse("model_user = "+json.dumps(userdata))
     
 
 

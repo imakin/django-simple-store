@@ -1,11 +1,15 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
-from store import models
+import json
+from store import models, views
 
 # Create your tests here.
 class OrderingTestCase(TestCase):
+    fixtures = [
+        # 'store/fixtures/store_settings.yaml', 
+        'store/fixtures/store_product_test.yaml', 
+    ]
     def setUp(self):
         models.Storesetting.objects.create(name='price_currency', value='IDR')
         models.Storesetting.objects.create(name='price_multiplier', value='1000')
@@ -28,3 +32,15 @@ class OrderingTestCase(TestCase):
         test_user_customer = test_user.customer
         print(test_user.customer.phone_number)
         self.assertEqual(test_user.customer.phone_number, self.test_user_phone)
+
+        #test adding to cart
+        products = models.Product.objects.filter(sku__startswith="producttest")
+        test_user.customer.cart.add(products[0])
+        print(len(test_user.customer.cart.values()))
+        
+        #test teh view
+        self.client.login(username='makin', password='testpassword')
+        resp = self.client.get('/store/user.js')
+        model_user_js = json.loads(str(resp.content[len("model_user = "):], 'utf8'))
+        print(model_user_js['cart'])
+        self.assertEqual(model_user_js['cart'][0],'producttest')

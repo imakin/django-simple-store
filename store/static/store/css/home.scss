@@ -1,3 +1,183 @@
+@import "breakpoint";
+$bp_small: 800px;
+
+$font-dosis: 'Dosis', sans-serif;
+$font-concert: 'Concert One', sans-serif;
+
+
+/* at-root, but replace some part of the selector */
+@mixin whenroot($selectorreplaced, $selectorreplacement) {
+    @at-root #{selector-replace(
+        &,
+        $selectorreplaced,
+        $selectorreplacement
+    )} {
+        @content;
+    }
+}
+
+$fontsizedefault: 14px;
+body {
+    font-family: $font-dosis;
+}
 .model {
     display: none;
+}
+h1 {
+    text-transform: capitalize;
+}
+@mixin expanded($selector, $expand_class: '.expand') {
+    @at-root #{selector-replace(
+        &,
+        $selector,
+        #{$selector + $expand_class}
+    )} {
+        @content;
+    }
+}
+#product-list-container {
+    font-size: 0;
+    li.product-list-item {
+        display: inline-block;
+        width: 33%;
+        text-align: center;
+        @include expanded(#product-list-container){
+            width: 100%;
+            max-height: 95vw;
+        }
+        .inside {
+            cursor: pointer;
+            display: inline-block;
+            @include expanded(#product-list-container){
+                cursor: default;
+            }
+            .product-info {
+                font-size: $fontsizedefault;
+                display: none;
+            }
+            .image-box {
+                display: inline-block;
+                img {
+                    display: inline-block;
+                    width: 100%;
+                    height: auto;
+                }
+                img.img-front {
+                    display: inline-block;
+                }
+                img.img-pic {
+                    display: none;
+                }
+                &.pic {
+                    img.img-front {
+                        display: none;
+                    }
+                    img.img-pic {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        .action-bar {
+            font-size: $fontsizedefault;
+            display: none;
+            @include expanded(#product-list-container){
+                display: block;
+            }
+            .absolute {
+                z-index: 1;
+                width: 100%;
+                top: 80vw;
+                @include bp(min-width, $bp_small) {
+                    top: 700px;
+                }
+            }
+            .box {
+                text-align: right;
+                font-size: 0;
+                button {
+                    vertical-align: bottom;
+                    font-size: $fontsizedefault;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    min-height: 44px;
+                    background-color: floralwhite;
+                    border-right-width: 0;
+                    &:last-of-type {
+                        border-right-width: 1px;
+                    }
+                    i, span {
+                        vertical-align: middle;
+                    }
+                    .text {
+                        display: inline-block;
+                        overflow: hidden;
+                        transition: width 0.5s;
+                    }
+                }
+                button.add-to-cart {
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    .text {
+                        width: 23px;
+                    }
+                }
+                .media {
+                    display: inline-block;
+                    vertical-align: middle;
+                    height: 50px;
+                    img {
+                        height: 50px;
+                        width: auto;
+                    }
+                    .text {
+                        width: 56px;
+                    }
+                }
+                button.size {
+                    .text {
+                        width: 44px;
+                    }
+                }
+                button.fold {
+                    padding-left:2px;
+                    padding-right:2px;
+                    .left {
+                        display: none;
+                    }
+                }
+                &.folded {
+                    @include whenroot("body", "body.intersection-observed") {
+                    }
+                    button {
+                        .text {
+                            width: 0px;
+                        }
+                    }
+                    button.fold {
+                        .left {
+                            display: inline-block;
+                        }
+                        .right {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #product-list-make-grid {
+        display: none;
+        @include expanded(#product-list-container){
+            display: block;
+        }
+        position: fixed;
+        z-index: 2;
+        right: 5px;
+        top: 5px;
+        width: 10vw;
+        height: 10vw;
+        max-width: 40px;
+        max-height: 40px;
+    }
 }
